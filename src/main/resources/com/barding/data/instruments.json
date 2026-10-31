@@ -1,0 +1,130 @@
+[
+  {
+    "id": "recorder",
+    "name": "Recorder",
+    "type": "WIND",
+    "levelRequired": 1,
+    "craft": {
+      "requirements": [{ "skill": "FLETCHING", "level": 1 }],
+      "materials": [{ "item": "Logs", "quantity": 1 }]
+    },
+    "riff": { "effect": "STAMINA", "durationSeconds": 30, "cooldownMinutes": 10, "areaSize": 1 },
+    "legendary": {
+      "id": "recorder_of_guided_notes",
+      "name": "Recorder of Guided Notes",
+      "riff": { "effect": "STAMINA", "durationSeconds": 60, "cooldownMinutes": 10, "areaSize": 1 }
+    }
+  },
+  {
+    "id": "bells",
+    "name": "Bells",
+    "type": "PERCUSSION",
+    "levelRequired": 5,
+    "craft": {
+      "requirements": [{ "skill": "SMITHING", "level": 5 }],
+      "materials": [{ "item": "Bronze bar", "quantity": 2 }]
+    },
+    "riff": { "effect": "SKILL_BOOST", "skill": "COOKING", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
+    "legendary": {
+      "id": "ancient_gnomic_bells",
+      "name": "Ancient Gnomic Bells",
+      "riff": { "effect": "SKILL_BOOST", "skill": "COOKING", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
+    }
+  },
+  {
+    "id": "rebec",
+    "name": "Rebec",
+    "type": "STRING",
+    "levelRequired": 10,
+    "craft": {
+      "requirements": [{ "skill": "CRAFTING", "level": 15 }, { "skill": "FLETCHING", "level": 15 }],
+      "materials": [{ "item": "Logs", "quantity": 3 }, { "item": "Stringy sinew", "quantity": 3 }]
+    },
+    "riff": { "effect": "SKILL_BOOST", "skill": "WOODCUTTING", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
+    "legendary": {
+      "id": "runeimbued_rebec",
+      "name": "Runeimbued Rebec",
+      "riff": { "effect": "SKILL_BOOST", "skill": "WOODCUTTING", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
+    }
+  },
+  {
+    "id": "buisine",
+    "name": "Buisine",
+    "type": "WIND",
+    "levelRequired": 15,
+    "craft": {
+      "requirements": [{ "skill": "SMITHING", "level": 15 }],
+      "materials": [{ "item": "Brass bar", "quantity": 3 }]
+    },
+    "riff": { "effect": "SKILL_BOOST", "skill": "AGILITY", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
+    "legendary": {
+      "id": "avarrockian_royal_buisine",
+      "name": "Avarrockian Royal Buisine",
+      "riff": { "effect": "SKILL_BOOST", "skill": "AGILITY", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
+    }
+  },
+  {
+    "id": "frame_drum",
+    "name": "Frame Drum",
+    "type": "PERCUSSION",
+    "levelRequired": 20,
+    "craft": {
+      "requirements": [{ "skill": "CRAFTING", "level": 15 }],
+      "materials": [{ "item": "Teak logs", "quantity": 1 }, { "item": "Soft leather", "quantity": 1 }]
+    },
+    "riff": { "effect": "SKILL_BOOST", "skill": "MINING", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
+    "legendary": {
+      "id": "warbeat_of_imperials",
+      "name": "Warbeat of Imperials",
+      "riff": { "effect": "SKILL_BOOST", "skill": "MINING", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
+    }
+  },
+  {
+    "id": "lute",
+    "name": "Lute",
+    "type": "STRING",
+    "levelRequired": 24,
+    "craft": {
+      "requirements": [{ "skill": "FLETCHING", "level": 20 }, { "skill": "CRAFTING", "level": 20 }],
+      "materials": [{ "item": "Juniper logs", "quantity": 2 }, { "item": "Stringy sinew", "quantity": 3 }]
+    },
+    "riff": { "effect": "SKILL_BOOST", "skill": "THIEVING", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
+    "legendary": {
+      "id": "lute_of_lost_harmonies",
+      "name": "Lute of Lost Harmonies",
+      "riff": { "effect": "SKILL_BOOST", "skill": "THIEVING", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
+    }
+  },
+  {
+    "id": "sackbut",
+    "name": "Sackbut",
+    "type": "WIND",
+    "levelRequired": 27,
+    "craft": {
+      "requirements": [{ "skill": "SMITHING", "level": 20 }],
+      "materials": [{ "item": "Brass bar", "quantity": 4 }]
+    },
+    "riff": { "effect": "PRAYER_DRAIN_PAUSE", "durationSeconds": 15, "cooldownMinutes": 10, "areaSize": 1 },
+    "legendary": {
+      "id": "brass_of_chivalry",
+      "name": "Brass of Chivalry",
+      "riff": { "effect": "PRAYER_DRAIN_PAUSE", "durationSeconds": 30, "cooldownMinutes": 10, "areaSize": 1 }
+    }
+  },
+  {
+    "id": "darbuka",
+    "name": "Darbuka",
+    "type": "PERCUSSION",
+    "levelRequired": 32,
+    "craft": {
+      "requirements": [{ "skill": "CRAFTING", "level": 25 }],
+      "materials": [{ "item": "Clay", "quantity": 4 }, { "item": "Hard leather", "quantity": 1 }]
+    },
+    "riff": { "effect": "SKILL_BOOST", "skill": "ATTACK", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
+    "legendary": {
+      "id": "dunecaller_darbuka",
+      "name": "Dunecaller Darbuka",
+      "riff": { "effect": "SKILL_BOOST", "skill": "ATTACK", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
+    }
+  }
+]
