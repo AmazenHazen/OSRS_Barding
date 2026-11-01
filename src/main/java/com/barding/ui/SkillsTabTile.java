@@ -178,8 +178,8 @@ public class SkillsTabTile
         hit.setFilled(true);
         hit.setOpacity(255); // fully transparent
         hit.setHasListener(true);
-        hit.setName("<col=ff9040>Barding</col>");
-        hit.setAction(0, "View");
+        hit.setName("");
+        hit.setAction(0, "View <col=ff981f>Barding</col> guide");
         hit.setOnOpListener((JavaScriptCallback) ev -> onClick.run());
         position(hit, x, y, w, h);
         ours.add(hit);

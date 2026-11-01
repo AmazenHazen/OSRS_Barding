@@ -1,0 +1,105 @@
+[
+  {
+    "id": "hymns_of_the_holy",
+    "name": "Hymns of the Holy",
+    "difficulty": "BEGINNER",
+    "description": "Work with the Lumbridge Church to get a new holy song from the Entrana Monks.",
+    "skillRequirements": [],
+    "questRequirements": [],
+    "rewards": [
+      "Collect religious songs from NPCs",
+      "Participate in Religious Ceremonies",
+      "Play and perform in Churches",
+      "Level up and play the Organ"
+    ]
+  },
+  {
+    "id": "a_noteworthy_duel",
+    "name": "A Noteworthy Duel",
+    "difficulty": "LOW",
+    "location": "Lumbridge",
+    "description": "Melodine, the music tutor, had her Recorder of Guided Notes stolen by a goblin. Find Tootfang the Goblin and challenge him to a Musician's duel to get Melodine's Recorder back.",
+    "skillRequirements": [{"skill": "BARDING", "level": 5}],
+    "questRequirements": [],
+    "rewards": [
+      "Bard Exp",
+      "Unlocks Musician Duels"
+    ]
+  },
+  {
+    "id": "welcome_to_the_white_knight_parade",
+    "name": "Welcome to the White Knight Parade",
+    "difficulty": "LOW",
+    "location": "White Knight Castle in Falador",
+    "description": "Help Sir Roundson organize a White Knight Parade for the city of Falador!",
+    "skillRequirements": [{"skill": "BARDING", "level": 20}, {"skill": "CRAFTING", "level": 20}],
+    "questRequirements": [],
+    "rewards": [
+      "Bard Exp",
+      "Crafting Exp"
+    ]
+  },
+  {
+    "id": "electric_in_my_soul",
+    "name": "Electric in my Soul",
+    "difficulty": "MEDIUM",
+    "location": "Dorgesh-Kaan",
+    "description": "Work with musical engineers in Dorgesh-Kaan to discover how to electrify string instruments.",
+    "skillRequirements": [{"skill": "BARDING", "level": 35}, {"skill": "CRAFTING", "level": 15}],
+    "questRequirements": ["Death to the Dorgeshuun"],
+    "rewards": [
+      "Learn how to play electric string instruments",
+      "Learn how to change string instruments into electric string instruments"
+    ]
+  },
+  {
+    "id": "windward_whistle",
+    "name": "Windward Whistle",
+    "difficulty": "MEDIUM",
+    "location": "Yanille",
+    "description": "The local guards want to enhance their warning whistles and emergency calls for potential Ogre attacks. Wizard Maestrum, the local legendary bard who imbues instruments with magic, will help you fulfill the request.",
+    "skillRequirements": [{"skill": "BARDING", "level": 40}, {"skill": "RUNECRAFT", "level": 22}, {"skill": "SMITHING", "level": 25}],
+    "questRequirements": [],
+    "rewards": [
+      "Wizard Maestrum teaches you how to add wind-imbued mouthpieces to your Wind instruments"
+    ]
+  },
+  {
+    "id": "thump_it_real_good",
+    "name": "Thump it Real Good",
+    "difficulty": "MEDIUM",
+    "location": "Gu'Tanoth",
+    "description": "Thuddley, an ogre, has discovered that using different sticks can change the sounds of percussion instruments. Help Thuddley create the perfect Thudding Sticks for the best Thudding Duel Gu'Tanoth has ever seen.",
+    "skillRequirements": [{"skill": "BARDING", "level": 45}],
+    "questRequirements": ["Watchtower"],
+    "rewards": [
+      "Access to Thudsticks and Thudmallots, which increase performance score when using a percussion instrument"
+    ]
+  },
+  {
+    "id": "fiddlin_with_fire",
+    "name": "Fiddlin' with Fire",
+    "difficulty": "HIGH",
+    "location": "The Deeper Lode Tavern in Lovakengj",
+    "description": "A musician has accidentally summoned a powerful Demon fiddler. You must battle and defeat them in the art of music.",
+    "skillRequirements": [{"skill": "BARDING", "level": 65}, {"skill": "PRAYER", "level": 52}],
+    "questRequirements": [],
+    "rewards": [
+      "Bard Exp"
+    ]
+  },
+  {
+    "id": "conductive_reasoning",
+    "name": "Conductive Reasoning",
+    "difficulty": "HIGH",
+    "location": "The Bard's College in Tempestus",
+    "description": "Help the woodwinds, the percussionists, the string section, and the conductor at the college put everything together for the Bard's College GRAND Orchestra.",
+    "skillRequirements": [{"skill": "BARDING", "level": 70}],
+    "questRequirements": [],
+    "rewards": [
+      "Ability to perform with the Bard's College Orchestra",
+      "Access to Orchestra Conducting",
+      "A permanent additional 2% exp boost to your performance score whenever you perform with other players"
+    ]
+  }
+]

@@ -1,8 +1,13 @@
 package com.barding;
 
+import com.barding.data.DuelRepository;
+import com.barding.data.GuideRepository;
 import com.barding.data.InstrumentRepository;
+import com.barding.data.QuestRepository;
 import com.barding.ui.BardingPanel;
+import com.barding.ui.GuideWindow;
 import com.barding.ui.SkillsTabTile;
+import com.google.gson.Gson;
 import com.google.inject.Provides;
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -10,7 +15,6 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import javax.inject.Inject;
-import javax.swing.SwingUtilities;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
@@ -20,10 +24,12 @@ import net.runelite.api.events.GameStateChanged;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
+import net.runelite.client.input.MouseManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.ClientToolbar;
 import net.runelite.client.ui.NavigationButton;
+import net.runelite.client.ui.overlay.OverlayManager;
 
 @Slf4j
 @PluginDescriptor(
@@ -44,7 +50,19 @@ public class BardingPlugin extends Plugin
 	private ClientToolbar clientToolbar;
 
 	@Inject
+	private OverlayManager overlayManager;
+
+	@Inject
+	private MouseManager mouseManager;
+
+	@Inject
 	private SkillsTabTile skillsTabTile;
+
+	@Inject
+	private GuideWindow guideWindow;
+
+	@Inject
+	private Gson gson;
 
 	private InstrumentRepository instruments;
 	private NavigationButton navButton;
@@ -52,18 +70,25 @@ public class BardingPlugin extends Plugin
 	@Override
 	protected void startUp() throws Exception
 	{
-		instruments = InstrumentRepository.loadDefault();
+		instruments = InstrumentRepository.loadDefault(gson);
 
+		// Sidebar panel (kept for now)
 		navButton = NavigationButton.builder()
-				.tooltip("Barding")
-				.icon(createIcon())
-				.priority(7)
-				.panel(new BardingPanel(instruments))
-				.build();
+			.tooltip("Barding")
+			.icon(createIcon())
+			.priority(7)
+			.panel(new BardingPanel(instruments))
+			.build();
 		clientToolbar.addNavigation(navButton);
 
-		skillsTabTile.setOnClick(() ->
-				SwingUtilities.invokeLater(() -> clientToolbar.openPanel(navButton)));
+		// In-game skill guide window, opened from the Barding tile in the Skills tab
+		QuestRepository quests = QuestRepository.loadDefault(gson);
+		DuelRepository duels = DuelRepository.loadDefault(gson, instruments, quests);
+		guideWindow.setData(GuideRepository.loadDefault(gson), instruments, duels, quests);
+		overlayManager.add(guideWindow);
+		mouseManager.registerMouseListener(guideWindow);
+		mouseManager.registerMouseWheelListener(guideWindow);
+		skillsTabTile.setOnClick(guideWindow::toggle);
 
 		log.info("Barding started with {} instruments", instruments.size());
 	}
@@ -72,8 +97,14 @@ public class BardingPlugin extends Plugin
 	protected void shutDown() throws Exception
 	{
 		clientToolbar.removeNavigation(navButton);
+
+		guideWindow.close();
+		mouseManager.unregisterMouseListener(guideWindow);
+		mouseManager.unregisterMouseWheelListener(guideWindow);
+		overlayManager.remove(guideWindow);
+
 		clientThread.invoke(skillsTabTile::reset);
-		log.debug("Barding stopped!");
+		log.info("Barding stopped!");
 	}
 
 	@Subscribe
@@ -85,9 +116,14 @@ public class BardingPlugin extends Plugin
 	@Subscribe
 	public void onGameStateChanged(GameStateChanged gameStateChanged)
 	{
-		if (gameStateChanged.getGameState() == GameState.LOGGED_IN)
+		GameState state = gameStateChanged.getGameState();
+		if (state == GameState.LOGGED_IN)
 		{
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "", "Barding says " + config.greeting(), null);
+		}
+		else if (state == GameState.LOGIN_SCREEN)
+		{
+			guideWindow.close();
 		}
 	}
 
@@ -97,7 +133,7 @@ public class BardingPlugin extends Plugin
 		return configManager.getConfig(BardingConfig.class);
 	}
 
-	/** Placeholder sidebar icon (a gold music note), drawn in code so no image file is needed yet. */
+	/** Placeholder sidebar icon (a gold music note), drawn in code. */
 	private static BufferedImage createIcon()
 	{
 		BufferedImage img = new BufferedImage(16, 16, BufferedImage.TYPE_INT_ARGB);
@@ -111,5 +147,4 @@ public class BardingPlugin extends Plugin
 		g.dispose();
 		return img;
 	}
-
 }

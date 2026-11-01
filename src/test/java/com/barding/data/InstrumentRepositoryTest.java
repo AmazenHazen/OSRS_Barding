@@ -1,13 +1,14 @@
 package com.barding.data;
 
+import com.google.gson.Gson;
 import java.io.StringReader;
-import java.util.HashSet;
-import java.util.Set;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Validates the data files. Run these whenever you edit instruments.json:
@@ -15,7 +16,7 @@ import static org.junit.Assert.assertTrue;
  */
 public class InstrumentRepositoryTest
 {
-	private final InstrumentRepository repo = InstrumentRepository.loadDefault();
+	private final InstrumentRepository repo = InstrumentRepository.loadDefault(new Gson());
 
 	@Test
 	public void loadsInstruments()
@@ -73,56 +74,95 @@ public class InstrumentRepositoryTest
 			{
 				assertRiffValid(def.getId(), def.getRiff());
 			}
-			if (def.getLegendary() != null)
-			{
-				assertRiffValid(def.getLegendary().getId(), def.getLegendary().getRiff());
-			}
 		}
 	}
 
 	@Test
-	public void legendaryIdsAreUniqueAndDoNotCollide()
+	public void legendariesPointAtAStandardInstrument()
 	{
-		Set<String> seen = new HashSet<>();
 		for (InstrumentDef def : repo.all())
 		{
-			seen.add(def.getId());
-		}
-		for (InstrumentDef def : repo.all())
-		{
-			if (def.getLegendary() != null)
+			if (!def.isLegendary())
 			{
-				assertTrue("Duplicate or colliding id: " + def.getLegendary().getId(),
-					seen.add(def.getLegendary().getId()));
+				assertNull(def.getId() + " is not legendary, so it should have no baseId", def.getBaseId());
+				continue;
 			}
+			assertNotNull(def.getId() + " is legendary and needs a baseId", def.getBaseId());
+			InstrumentDef base = repo.find(def.getBaseId()).orElse(null);
+			assertNotNull(def.getId() + " has unknown baseId " + def.getBaseId(), base);
+			assertFalse(def.getId() + " must point at a standard instrument, not another legendary", base.isLegendary());
+			assertEquals(def.getId() + " should have the same level as " + base.getId(),
+				base.getLevelRequired(), def.getLevelRequired());
+			assertEquals(def.getId() + " should have the same type as " + base.getId(), base.getType(), def.getType());
+			assertNull(def.getId() + " is won in duels, so it has no craft recipe", def.getCraft());
+			assertNotNull(def.getId() + " needs a riff", def.getRiff());
 		}
 	}
 
 	@Test(expected = IllegalStateException.class)
 	public void duplicateIdsAreRejected()
 	{
-		String json = "[{\"id\":\"a\",\"name\":\"A\",\"type\":\"WIND\"},{\"id\":\"a\",\"name\":\"B\",\"type\":\"WIND\"}]";
-		InstrumentRepository.load(new StringReader(json));
+		String json = "[{\"id\":\"a\",\"name\":\"A\",\"type\":\"RECORDER\"},{\"id\":\"a\",\"name\":\"B\",\"type\":\"RECORDER\"}]";
+		InstrumentRepository.load(new StringReader(json), new Gson());
+	}
+
+	@Test
+	public void enumValuesIgnoreCase()
+	{
+		String json = "[{\"id\":\"a\",\"name\":\"A\",\"type\":\"recorder\"},{\"id\":\"b\",\"name\":\"B\",\"type\":\"Bells\"}]";
+		InstrumentRepository loaded = InstrumentRepository.load(new StringReader(json), new Gson());
+		assertEquals(InstrumentType.RECORDER, loaded.get("a").getType());
+		assertEquals(InstrumentType.BELLS, loaded.get("b").getType());
+	}
+
+	@Test
+	public void unknownEnumValueSaysWhatAndWhere()
+	{
+		String json = "[{\"id\":\"a\",\"name\":\"A\",\"type\":\"RECORDER\"},{\"id\":\"b\",\"name\":\"B\",\"type\":\"Wnid\"}]";
+		try
+		{
+			InstrumentRepository.load(new StringReader(json), new Gson());
+			fail("an unknown type should be rejected");
+		}
+		catch (IllegalStateException e)
+		{
+			assertTrue(e.getMessage(), e.getMessage().contains("Wnid"));
+			assertTrue(e.getMessage(), e.getMessage().contains("$[1].type"));
+		}
 	}
 
 	@Test
 	public void lookupByIdWorks()
 	{
 		assertEquals("Recorder", repo.get("recorder").getName());
+		assertTrue(repo.get("recorder_of_guided_notes").isLegendary());
 		assertFalse(repo.find("does_not_exist").isPresent());
 	}
 
 	private static void assertRiffValid(String owner, Riff riff)
 	{
-		assertNotNull(owner + " riff missing", riff);
 		assertNotNull(owner + " riff effect missing", riff.getEffect());
-		assertTrue(owner + " bad duration", riff.getDurationSeconds() > 0);
-		assertTrue(owner + " bad cooldown", riff.getCooldownMinutes() > 0);
+		assertTrue(owner + " bad duration", riff.getDurationSeconds() >= 0);
+		assertTrue(owner + " bad cooldown", riff.getCooldownMinutes() >= 0);
 		assertTrue(owner + " bad area", riff.getAreaSize() >= 1);
-		if (riff.getEffect() == RiffEffect.SKILL_BOOST)
+		switch (riff.getEffect())
 		{
-			assertNotNull(owner + " skill boost needs a skill", riff.getSkill());
-			assertTrue(owner + " skill boost needs boost > 0", riff.getBoost() > 0);
+			case SKILL_BOOST:
+				assertNotNull(owner + " skill boost needs skills", riff.getSkills());
+				assertFalse(owner + " skill boost needs at least one skill", riff.getSkills().isEmpty());
+				assertTrue(owner + " skill boost needs boost > 0", riff.getBoost() > 0);
+				assertTrue(owner + " skill boost needs a duration", riff.getDurationSeconds() > 0);
+				assertTrue(owner + " skill boost needs a cooldown", riff.getCooldownMinutes() > 0);
+				break;
+			case STAMINA:
+			case PRAYER_DRAIN_PAUSE:
+				assertTrue(owner + " needs a duration", riff.getDurationSeconds() > 0);
+				assertTrue(owner + " needs a cooldown", riff.getCooldownMinutes() > 0);
+				break;
+			default:
+				assertNotNull(owner + " riff needs a description", riff.getDescription());
+				assertFalse(owner + " riff needs a description", riff.getDescription().isEmpty());
+				break;
 		}
 	}
 }

@@ -1,0 +1,81 @@
+{
+  "pages": [
+    {
+      "title": "Overview",
+      "tabs": [
+        {
+          "title": "Overview",
+          "blocks": [
+            { "type": "text", "text": "Barding is a skill about performing music. This text is a placeholder: the real guide text will be written from the design document and kept in this file." },
+            { "type": "heading", "text": "Getting started" },
+            { "type": "bullets", "items": [
+              "Craft an instrument.",
+              "Tune it before you play.",
+              "Perform to earn Barding experience.",
+              "Challenge other musicians to duels."
+            ] },
+            { "type": "text", "text": "Use the list on the left to browse the guide." }
+          ]
+        },
+        {
+          "title": "Quests",
+          "blocks": [
+            { "type": "quests" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Instruments",
+      "tabs": [
+        {
+          "title": "Standard",
+          "blocks": [
+            { "type": "instruments" }
+          ]
+        },
+        {
+          "title": "Legendary",
+          "blocks": [
+            { "type": "legendaries" }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Duels",
+      "tabs": [
+        {
+          "title": "How to duel",
+          "blocks": [
+            { "type": "text", "text": "Challenge a local or master musician to a duel. Musician Duels are unlocked by completing A Noteworthy Duel." },
+            { "type": "heading", "text": "Winning" },
+            { "type": "text", "text": "Finish with a higher performance score than your opponent without losing all your health." },
+            { "type": "heading", "text": "During a duel" },
+            { "type": "bullets", "items": [
+              "Adjust your tempo and volume to match the audience's yells.",
+              "Green music notes increase the rate you gain performance score.",
+              "Red zigzag notes reduce the rate you gain performance score.",
+              "Purple rest symbols heal music damage from your opponent.",
+              "Blue clef symbols charge your special attack faster.",
+              "Time your special attack to stun or damage your opponent."
+            ] },
+            { "type": "heading", "text": "Rewards" },
+            { "type": "bullets", "items": [
+              "A big exp drop for a win, or a small one for a loss.",
+              "Each win has a 1/25 chance to reward your opponent's legendary instrument."
+            ] },
+            { "type": "heading", "text": "Upgrades" },
+            { "type": "text", "text": "Electric string instruments, Thudsticks or Thudmallots, and wind-imbued mouthpieces make your special attack more effective and increase performance score by 2.5%." }
+          ]
+        },
+        {
+          "title": "Musicians",
+          "blocks": [
+            { "type": "duels" }
+          ]
+        }
+      ]
+    }
+  ]
+}

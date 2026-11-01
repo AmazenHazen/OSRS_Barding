@@ -2,7 +2,7 @@ package com.barding.ui;
 
 import com.barding.data.InstrumentDef;
 import com.barding.data.Material;
-import com.barding.data.Riff;
+import com.barding.data.RiffText;
 import com.barding.data.SkillRequirement;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -54,9 +54,16 @@ class InstrumentsTab extends JPanel
     private static String cardHtml(InstrumentDef def)
     {
         StringBuilder sb = new StringBuilder("<html><body style='width:165px'>");
-        sb.append("<b>").append(def.getName()).append("</b><br>");
+        if (def.isLegendary())
+        {
+            sb.append("<font color='#ffd700'><b>").append(def.getName()).append("</b></font><br>");
+        }
+        else
+        {
+            sb.append("<b>").append(def.getName()).append("</b><br>");
+        }
         sb.append("<font color='#9a9a9a'>Level ").append(def.getLevelRequired())
-                .append(" - ").append(capitalize(def.getType().name())).append("</font><br>");
+                .append(" - ").append(RiffText.capitalize(def.getType().getFamily().name())).append("</font><br>");
 
         if (def.getCraft() != null)
         {
@@ -64,42 +71,19 @@ class InstrumentsTab extends JPanel
                     .map((Material m) -> m.getQuantity() + "x " + m.getItem())
                     .collect(Collectors.joining(", "));
             String reqs = def.getCraft().getRequirements().stream()
-                    .map((SkillRequirement r) -> r.getLevel() + " " + capitalize(r.getSkill()))
+                    .map((SkillRequirement r) -> r.getLevel() + " " + RiffText.capitalize(r.getSkill()))
                     .collect(Collectors.joining(" & "));
-            sb.append("Craft: ").append(mats).append(" (").append(reqs).append(")<br>");
+            sb.append("Craft: ").append(mats);
+            if (!reqs.isEmpty())
+            {
+                sb.append(" (").append(reqs).append(")");
+            }
+            sb.append("<br>");
         }
         if (def.getRiff() != null)
         {
-            sb.append("Riff: ").append(describeRiff(def.getRiff())).append("<br>");
-        }
-        if (def.getLegendary() != null)
-        {
-            sb.append("<font color='#ffd700'>Legendary: ")
-                    .append(def.getLegendary().getName()).append("</font>");
+            sb.append("Riff: ").append(RiffText.describe(def.getRiff())).append("<br>");
         }
         return sb.append("</body></html>").toString();
-    }
-
-    private static String describeRiff(Riff riff)
-    {
-        String cooldown = " (" + riff.getCooldownMinutes() + " min cooldown)";
-        switch (riff.getEffect())
-        {
-            case SKILL_BOOST:
-                String area = riff.getAreaSize() > 1 ? ", " + riff.getAreaSize() + "x" + riff.getAreaSize() + " area" : "";
-                return "+" + riff.getBoost() + " " + capitalize(riff.getSkill())
-                        + " for " + (riff.getDurationSeconds() / 60) + " min" + area + cooldown;
-            case STAMINA:
-                return "Stamina boost, " + riff.getDurationSeconds() + "s" + cooldown;
-            case PRAYER_DRAIN_PAUSE:
-                return "Pauses prayer drain, " + riff.getDurationSeconds() + "s" + cooldown;
-            default:
-                return riff.getEffect().name();
-        }
-    }
-
-    private static String capitalize(String s)
-    {
-        return s.charAt(0) + s.substring(1).toLowerCase();
     }
 }

@@ -6,8 +6,8 @@ import lombok.Value;
  * One instrument, as described in instruments.json. This is pure data:
  * no RuneLite types, so it can be loaded and tested without a running client.
  *
- * "craft", "riff" and "legendary" may be absent (null) for instruments that
- * cannot be crafted, have no riff, or have no legendary version.
+ * "craft" and "riff" may be absent (null) for instruments that cannot be
+ * crafted or have no riff.
  */
 @Value
 public class InstrumentDef
@@ -17,7 +17,6 @@ public class InstrumentDef
 
 	/** Display name shown in the skill guide. */
 	String name;
-
 	InstrumentType type;
 
 	/** Barding level needed to use the instrument. */
@@ -25,5 +24,11 @@ public class InstrumentDef
 
 	CraftRecipe craft;
 	Riff riff;
-	LegendaryInstrumentDef legendary;
+	boolean legendary;
+
+	/** Id of the standard instrument this legendary is based on. Absent on standard instruments. */
+	String baseId;
+
+	/** Lore or notes shown alongside the instrument. Optional. */
+	String description;
 }

@@ -1,6 +1,7 @@
 package com.barding.data;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonParseException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -14,8 +15,8 @@ import java.util.Optional;
 
 /**
  * Loads instruments.json once and serves lookups by id.
- * Fails fast (IllegalStateException) on missing fields or duplicate ids,
- * so bad data is caught the moment it is loaded.
+ * Fails fast (IllegalStateException) on missing fields, unknown enum values or
+ * duplicate ids, so bad data is caught the moment it is loaded.
  */
 public class InstrumentRepository
 {
@@ -29,7 +30,7 @@ public class InstrumentRepository
 	}
 
 	/** Loads instruments.json from the classpath (src/main/resources/com/barding/data). */
-	public static InstrumentRepository loadDefault()
+	public static InstrumentRepository loadDefault(Gson gson)
 	{
 		try (InputStream in = InstrumentRepository.class.getResourceAsStream(DEFAULT_RESOURCE))
 		{
@@ -37,7 +38,7 @@ public class InstrumentRepository
 			{
 				throw new IllegalStateException("Missing resource: " + DEFAULT_RESOURCE);
 			}
-			return load(new InputStreamReader(in, StandardCharsets.UTF_8));
+			return load(new InputStreamReader(in, StandardCharsets.UTF_8), gson);
 		}
 		catch (IOException e)
 		{
@@ -46,9 +47,21 @@ public class InstrumentRepository
 	}
 
 	/** Loads instruments from any reader, which makes it easy to test with small inline JSON. */
-	public static InstrumentRepository load(Reader reader)
+	public static InstrumentRepository load(Reader reader, Gson gson)
 	{
-		InstrumentDef[] defs = new Gson().fromJson(reader, InstrumentDef[].class);
+		Gson strict = gson.newBuilder()
+			.registerTypeAdapterFactory(new StrictEnumAdapterFactory())
+			.create();
+
+		InstrumentDef[] defs;
+		try
+		{
+			defs = strict.fromJson(reader, InstrumentDef[].class);
+		}
+		catch (JsonParseException e)
+		{
+			throw new IllegalStateException("Bad instrument data: " + e.getMessage(), e);
+		}
 		if (defs == null)
 		{
 			throw new IllegalStateException("Instrument data is empty");

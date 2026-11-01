@@ -2,129 +2,638 @@
   {
     "id": "recorder",
     "name": "Recorder",
-    "type": "WIND",
+    "type": "RECORDER",
     "levelRequired": 1,
-    "craft": {
-      "requirements": [{ "skill": "FLETCHING", "level": 1 }],
-      "materials": [{ "item": "Logs", "quantity": 1 }]
-    },
-    "riff": { "effect": "STAMINA", "durationSeconds": 30, "cooldownMinutes": 10, "areaSize": 1 },
-    "legendary": {
-      "id": "recorder_of_guided_notes",
-      "name": "Recorder of Guided Notes",
-      "riff": { "effect": "STAMINA", "durationSeconds": 60, "cooldownMinutes": 10, "areaSize": 1 }
-    }
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 1}], "materials": [{"item": "Logs", "quantity": 1}]},
+    "riff": {"effect": "STAMINA", "durationSeconds": 30, "cooldownMinutes": 10, "areaSize": 1}
+  },
+  {
+    "id": "recorder_of_guided_notes",
+    "name": "Recorder of Guided Notes",
+    "type": "RECORDER",
+    "levelRequired": 1,
+    "legendary": true,
+    "baseId": "recorder",
+    "description": "This Recorder is made with magic to help guide its user to the correct note.",
+    "riff": {"effect": "STAMINA", "durationSeconds": 60, "cooldownMinutes": 10, "areaSize": 1}
   },
   {
     "id": "bells",
     "name": "Bells",
-    "type": "PERCUSSION",
+    "type": "BELLS",
     "levelRequired": 5,
-    "craft": {
-      "requirements": [{ "skill": "SMITHING", "level": 5 }],
-      "materials": [{ "item": "Bronze bar", "quantity": 2 }]
-    },
-    "riff": { "effect": "SKILL_BOOST", "skill": "COOKING", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
-    "legendary": {
-      "id": "ancient_gnomic_bells",
-      "name": "Ancient Gnomic Bells",
-      "riff": { "effect": "SKILL_BOOST", "skill": "COOKING", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
-    }
+    "craft": {"requirements": [{"skill": "SMITHING", "level": 5}], "materials": [{"item": "Bronze bar", "quantity": 2}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["COOKING"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "ancient_gnomic_bells",
+    "name": "Ancient Gnomic Bells",
+    "type": "BELLS",
+    "levelRequired": 5,
+    "legendary": true,
+    "baseId": "bells",
+    "description": "Bells made of ancient gnomic metals that have been lost to time.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["COOKING"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
   },
   {
     "id": "rebec",
     "name": "Rebec",
-    "type": "STRING",
+    "type": "REBEC",
     "levelRequired": 10,
-    "craft": {
-      "requirements": [{ "skill": "CRAFTING", "level": 15 }, { "skill": "FLETCHING", "level": 15 }],
-      "materials": [{ "item": "Logs", "quantity": 3 }, { "item": "Stringy sinew", "quantity": 3 }]
-    },
-    "riff": { "effect": "SKILL_BOOST", "skill": "WOODCUTTING", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
-    "legendary": {
-      "id": "runeimbued_rebec",
-      "name": "Runeimbued Rebec",
-      "riff": { "effect": "SKILL_BOOST", "skill": "WOODCUTTING", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
-    }
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 15}, {"skill": "FLETCHING", "level": 15}], "materials": [{"item": "Logs", "quantity": 3}, {"item": "Stringy sinew", "quantity": 3}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["WOODCUTTING"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "runeimbued_rebec",
+    "name": "Runeimbued Rebec",
+    "type": "REBEC",
+    "levelRequired": 10,
+    "legendary": true,
+    "baseId": "rebec",
+    "description": "A Rebec that has been imbued with magic powers! The reverb on this Rebec is incredible!",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["WOODCUTTING"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "organ",
+    "name": "Organ",
+    "type": "ORGAN",
+    "levelRequired": 10,
+    "description": "Perform / play only. Requires the Hymns of the Holy quest."
   },
   {
     "id": "buisine",
     "name": "Buisine",
-    "type": "WIND",
+    "type": "BUISINE",
     "levelRequired": 15,
-    "craft": {
-      "requirements": [{ "skill": "SMITHING", "level": 15 }],
-      "materials": [{ "item": "Brass bar", "quantity": 3 }]
-    },
-    "riff": { "effect": "SKILL_BOOST", "skill": "AGILITY", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
-    "legendary": {
-      "id": "avarrockian_royal_buisine",
-      "name": "Avarrockian Royal Buisine",
-      "riff": { "effect": "SKILL_BOOST", "skill": "AGILITY", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
-    }
+    "craft": {"requirements": [{"skill": "SMITHING", "level": 15}], "materials": [{"item": "Brass bar", "quantity": 3}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["AGILITY"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "avarrockian_royal_buisine",
+    "name": "Avarrockian Royal Buisine",
+    "type": "BUISINE",
+    "levelRequired": 15,
+    "legendary": true,
+    "baseId": "buisine",
+    "description": "A Buisine that has lasted through two Ages! A true musical artifact that has lasted the passage of time.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["AGILITY"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
   },
   {
     "id": "frame_drum",
     "name": "Frame Drum",
-    "type": "PERCUSSION",
+    "type": "FRAME_DRUM",
     "levelRequired": 20,
-    "craft": {
-      "requirements": [{ "skill": "CRAFTING", "level": 15 }],
-      "materials": [{ "item": "Teak logs", "quantity": 1 }, { "item": "Soft leather", "quantity": 1 }]
-    },
-    "riff": { "effect": "SKILL_BOOST", "skill": "MINING", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
-    "legendary": {
-      "id": "warbeat_of_imperials",
-      "name": "Warbeat of Imperials",
-      "riff": { "effect": "SKILL_BOOST", "skill": "MINING", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
-    }
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 15}], "materials": [{"item": "Teak logs", "quantity": 1}, {"item": "Soft leather", "quantity": 1}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["MINING"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "warbeat_of_imperials",
+    "name": "Warbeat of Imperials",
+    "type": "FRAME_DRUM",
+    "levelRequired": 20,
+    "legendary": true,
+    "baseId": "frame_drum",
+    "description": "The Warbeat of the Imperials is the inspirational drum that allows all warriors to fight to the same beat.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["MINING"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
   },
   {
     "id": "lute",
     "name": "Lute",
-    "type": "STRING",
+    "type": "LUTE",
     "levelRequired": 24,
-    "craft": {
-      "requirements": [{ "skill": "FLETCHING", "level": 20 }, { "skill": "CRAFTING", "level": 20 }],
-      "materials": [{ "item": "Juniper logs", "quantity": 2 }, { "item": "Stringy sinew", "quantity": 3 }]
-    },
-    "riff": { "effect": "SKILL_BOOST", "skill": "THIEVING", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
-    "legendary": {
-      "id": "lute_of_lost_harmonies",
-      "name": "Lute of Lost Harmonies",
-      "riff": { "effect": "SKILL_BOOST", "skill": "THIEVING", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
-    }
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 20}, {"skill": "CRAFTING", "level": 20}], "materials": [{"item": "Juniper logs", "quantity": 2}, {"item": "Stringy sinew", "quantity": 3}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["THIEVING"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "lute_of_lost_harmonies",
+    "name": "Lute of Lost Harmonies",
+    "type": "LUTE",
+    "levelRequired": 24,
+    "legendary": true,
+    "baseId": "lute",
+    "description": "This lute is able to adjust its tone of the different cultures and locations it has visited.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["THIEVING"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "windchimes",
+    "name": "Windchimes",
+    "type": "WINDCHIMES",
+    "levelRequired": 25
   },
   {
     "id": "sackbut",
     "name": "Sackbut",
-    "type": "WIND",
+    "type": "SACKBUT",
     "levelRequired": 27,
-    "craft": {
-      "requirements": [{ "skill": "SMITHING", "level": 20 }],
-      "materials": [{ "item": "Brass bar", "quantity": 4 }]
-    },
-    "riff": { "effect": "PRAYER_DRAIN_PAUSE", "durationSeconds": 15, "cooldownMinutes": 10, "areaSize": 1 },
-    "legendary": {
-      "id": "brass_of_chivalry",
-      "name": "Brass of Chivalry",
-      "riff": { "effect": "PRAYER_DRAIN_PAUSE", "durationSeconds": 30, "cooldownMinutes": 10, "areaSize": 1 }
-    }
+    "craft": {"requirements": [{"skill": "SMITHING", "level": 20}], "materials": [{"item": "Brass bar", "quantity": 4}]},
+    "riff": {"effect": "PRAYER_DRAIN_PAUSE", "durationSeconds": 15, "cooldownMinutes": 10, "areaSize": 1}
+  },
+  {
+    "id": "brass_of_chivalry",
+    "name": "Brass of Chivalry",
+    "type": "SACKBUT",
+    "levelRequired": 27,
+    "legendary": true,
+    "baseId": "sackbut",
+    "description": "The instrument of the greatest knight musician the world has ever seen, Sir Roundson!",
+    "riff": {"effect": "PRAYER_DRAIN_PAUSE", "durationSeconds": 30, "cooldownMinutes": 10, "areaSize": 1}
+  },
+  {
+    "id": "penguin_bongos",
+    "name": "Penguin Bongos",
+    "type": "BONGOS",
+    "levelRequired": 30,
+    "craft": {"requirements": [], "materials": [{"item": "Mahogany logs", "quantity": 1}, {"item": "Soft leather", "quantity": 1}]}
   },
   {
     "id": "darbuka",
     "name": "Darbuka",
-    "type": "PERCUSSION",
+    "type": "DARBUKA",
     "levelRequired": 32,
-    "craft": {
-      "requirements": [{ "skill": "CRAFTING", "level": 25 }],
-      "materials": [{ "item": "Clay", "quantity": 4 }, { "item": "Hard leather", "quantity": 1 }]
-    },
-    "riff": { "effect": "SKILL_BOOST", "skill": "ATTACK", "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 },
-    "legendary": {
-      "id": "dunecaller_darbuka",
-      "name": "Dunecaller Darbuka",
-      "riff": { "effect": "SKILL_BOOST", "skill": "ATTACK", "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5 }
-    }
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 25}], "materials": [{"item": "Clay", "quantity": 4}, {"item": "Hard leather", "quantity": 1}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["ATTACK"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "dunecaller_darbuka",
+    "name": "Dunecaller Darbuka",
+    "type": "DARBUKA",
+    "levelRequired": 32,
+    "legendary": true,
+    "baseId": "darbuka",
+    "description": "Dune Dune Dune Dune. The great caller of the Sands.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["ATTACK"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "snake_charm",
+    "name": "Snake Charm",
+    "type": "SNAKE_CHARM",
+    "levelRequired": 36,
+    "riff": {"effect": "SNAKE_DISTRACT", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Distracts snakes while you loot the pots in each room of Pyramid Plunder."}
+  },
+  {
+    "id": "serpents_tongue",
+    "name": "Serpent's Tongue",
+    "type": "SNAKE_CHARM",
+    "levelRequired": 36,
+    "legendary": true,
+    "baseId": "snake_charm",
+    "description": "A Snake Charm so powerful that it is said that it translates your voice into Parseltongue.",
+    "riff": {"effect": "SNAKE_DISTRACT", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Distracts snakes while you loot the pots in each room of Pyramid Plunder."}
+  },
+  {
+    "id": "shell_collection",
+    "name": "Shell Collection",
+    "type": "SHELL_COLLECTION",
+    "levelRequired": 38
+  },
+  {
+    "id": "lyre",
+    "name": "Lyre",
+    "type": "LYRE",
+    "levelRequired": 40,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 40}, {"skill": "FLETCHING", "level": 25}], "materials": [{"item": "Branch", "quantity": 1}, {"item": "Golden wool", "quantity": 1}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["BARDING"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "crescent_lyre",
+    "name": "Crescent Lyre",
+    "type": "LYRE",
+    "levelRequired": 40,
+    "legendary": true,
+    "baseId": "lyre",
+    "description": "A pure silver crescent lyre made by a professional Oneiromancer that excelled in lullabies. The soothing tones of this lyre can put anyone to sleep.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["BARDING"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "cave_tabor",
+    "name": "Cave Tabor",
+    "type": "TABOR",
+    "levelRequired": 45,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 40}], "materials": [{"item": "Frog leather", "quantity": 2}, {"item": "Brass bar", "quantity": 2}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["DEFENCE"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "earthbound_tabor",
+    "name": "Earthbound Tabor",
+    "type": "TABOR",
+    "levelRequired": 45,
+    "legendary": true,
+    "baseId": "cave_tabor",
+    "description": "A Tabor infused with the 10 Melodies of the Goblin Tribes.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["DEFENCE"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "wooden_flute",
+    "name": "Wooden Flute",
+    "type": "WOOD_FLUTE",
+    "levelRequired": 48,
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 45}], "materials": [{"item": "Maple logs", "quantity": 1}]},
+    "riff": {"effect": "HARVEST_LIFE", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "When played next to a crop, 10% chance to give it an extra Harvest Life. Only works once per plant."}
+  },
+  {
+    "id": "heartwood_flute",
+    "name": "Heartwood Flute",
+    "type": "WOOD_FLUTE",
+    "levelRequired": 48,
+    "legendary": true,
+    "baseId": "wooden_flute",
+    "description": "A flute made from an Ent's Heart. It produces notes that are said to give extra life to other plants.",
+    "riff": {"effect": "HARVEST_LIFE", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "When played next to a crop, 20% chance to give it an extra Harvest Life. Only works once per plant."}
+  },
+  {
+    "id": "banjo",
+    "name": "Banjo",
+    "type": "BANJO",
+    "levelRequired": 52,
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 50}, {"skill": "CRAFTING", "level": 50}], "materials": [{"item": "Mahogany logs", "quantity": 2}, {"item": "Stringy sinew", "quantity": 5}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["FISHING"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "ye_ol_seastummer",
+    "name": "Ye Ol Seastummer",
+    "type": "BANJO",
+    "levelRequired": 52,
+    "legendary": true,
+    "baseId": "banjo",
+    "description": "Tinnitus Tim's Banjo! It has a certain Twang that no other instrument has, no one knows why!",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["FISHING"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "shawm",
+    "name": "Shawm",
+    "type": "SHAWM",
+    "levelRequired": 54,
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 55}], "materials": [{"item": "Teak logs", "quantity": 2}]},
+    "riff": {"effect": "MATURE_ALE", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Played next to a completed Brewing Vat: 10% chance to mature the brewed ale. Once per brewing."}
+  },
+  {
+    "id": "soaked_shawm_of_the_tannins",
+    "name": "Soaked Shawm of the Tannins",
+    "type": "SHAWM",
+    "levelRequired": 54,
+    "legendary": true,
+    "baseId": "shawm",
+    "description": "A shawm that has been aged 50 years in the Wine Tannins of Aldarin.",
+    "riff": {"effect": "MATURE_ALE", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Played next to a completed Brewing Vat: 20% chance to mature the brewed ale. Once per brewing."}
+  },
+  {
+    "id": "accordion",
+    "name": "Accordion",
+    "type": "ACCORDIAN",
+    "levelRequired": 56,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 55}], "materials": [{"item": "Brass bar", "quantity": 2}, {"item": "Steel bar", "quantity": 2}, {"item": "Soft leather", "quantity": 2}]},
+    "riff": {"effect": "REMOVE_SKULL", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Can be played (outside PvP areas) to remove your skull."}
+  },
+  {
+    "id": "concertia_of_the_dead",
+    "name": "Concertia of the Dead",
+    "type": "ACCORDIAN",
+    "levelRequired": 56,
+    "legendary": true,
+    "baseId": "accordion",
+    "description": "A concertia that is said to have a sway and persuasion over the dead.",
+    "riff": {"effect": "REMOVE_SKULL", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Can be played (outside PvP areas) to remove your skull."}
+  },
+  {
+    "id": "guiro",
+    "name": "Guiro",
+    "type": "GUIRO",
+    "levelRequired": 59,
+    "craft": {"requirements": [{"skill": "SMITHING", "level": 55}], "materials": [{"item": "Steel bar", "quantity": 3}]},
+    "riff": {"effect": "FOSSIL_TRANSPORT", "durationSeconds": 0, "cooldownMinutes": 15, "areaSize": 1, "description": "Transports 10 fossils in your inventory straight to your fossil container storage."}
+  },
+  {
+    "id": "fossilized_guiro",
+    "name": "Fossilized Guiro",
+    "type": "GUIRO",
+    "levelRequired": 59,
+    "legendary": true,
+    "baseId": "guiro",
+    "description": "A guiro made of some sort of fossil? Is it a Shark Beast Spine? Or a Sabertooth Squirrel? Who knows, it just sounds cool!",
+    "riff": {"effect": "FOSSIL_TRANSPORT", "durationSeconds": 0, "cooldownMinutes": 15, "areaSize": 1, "description": "Transports all fossils in your inventory straight to your fossil container storage."}
+  },
+  {
+    "id": "gemshorn",
+    "name": "Gemshorn",
+    "type": "GEMSHORN",
+    "levelRequired": 62,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 60}], "materials": [{"item": "Goat horn", "quantity": 1}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["HUNTER"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "longhorn_gemshorn",
+    "name": "Longhorn Gemshorn",
+    "type": "GEMSHORN",
+    "levelRequired": 62,
+    "legendary": true,
+    "baseId": "gemshorn",
+    "description": "A super long curly cue gemshorn made from the horn of the GOAT of goats.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["HUNTER"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "fiddle",
+    "name": "Fiddle",
+    "type": "FIDDLE",
+    "levelRequired": 65,
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 65}, {"skill": "CRAFTING", "level": 65}], "materials": [{"item": "Maple logs", "quantity": 2}, {"item": "Stringy sinew", "quantity": 4}]},
+    "riff": {"effect": "CAST_REANIMATION", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Can be charged with 10 Re-Animation spells. Playing it casts the reanimation spell."}
+  },
+  {
+    "id": "infernus_fiddle",
+    "name": "Infernus Fiddle",
+    "type": "FIDDLE",
+    "levelRequired": 65,
+    "legendary": true,
+    "baseId": "fiddle",
+    "description": "A musical instrument brought and crafted from the flames of Infernus. Rumor is that the strings are made of gold and the body is made of Bloodwood.",
+    "riff": {"effect": "CAST_REANIMATION", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Can be charged with 25 Re-Animation spells. Playing it casts the reanimation spell."}
+  },
+  {
+    "id": "fremennik_bodhran",
+    "name": "Fremennik Bodhran",
+    "type": "BODHRAN",
+    "levelRequired": 68,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 65}], "materials": [{"item": "Arctic pine logs", "quantity": 2}, {"item": "Kyatt leather", "quantity": 1}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["STRENGTH"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "valhallas_pulse",
+    "name": "Valhalla's Pulse",
+    "type": "BODHRAN",
+    "levelRequired": 68,
+    "legendary": true,
+    "baseId": "fremennik_bodhran",
+    "description": "Valhalla's Pulse is a recreation of the instrument used to play for Fremennik warriors when they enter the afterlife.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["STRENGTH"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "symbols",
+    "name": "Symbols",
+    "type": "SYMBOLS",
+    "levelRequired": 68,
+    "craft": {"requirements": [{"skill": "SMITHING", "level": 66}], "materials": [{"item": "Brass bar", "quantity": 2}, {"item": "Bronze bar", "quantity": 2}]},
+    "riff": {"effect": "STUN", "durationSeconds": 10, "cooldownMinutes": 5, "areaSize": 3, "description": "Stuns all enemies around you for 10 seconds (3x3)."}
+  },
+  {
+    "id": "super_monkey_symbols",
+    "name": "Super-Monkey Symbols",
+    "type": "SYMBOLS",
+    "levelRequired": 68,
+    "legendary": true,
+    "baseId": "symbols",
+    "description": "BIG CRASH BOOM! SUPER MONKEY SYMBOLS!",
+    "riff": {"effect": "STUN", "durationSeconds": 15, "cooldownMinutes": 5, "areaSize": 3, "description": "Stuns all enemies around you for 15 seconds (3x3)."}
+  },
+  {
+    "id": "hurdy_gurdy",
+    "name": "Hurdy-Gurdy",
+    "type": "HURDYGURDY",
+    "levelRequired": 70,
+    "description": "Bought, not crafted.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["RANGED"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "the_everwinding_reel",
+    "name": "The Everwinding Reel",
+    "type": "HURDYGURDY",
+    "levelRequired": 70,
+    "legendary": true,
+    "baseId": "hurdy_gurdy",
+    "description": "A magical Hurdy-Gurdy that can play a neverending song. Hopefully no one plays the song that never ends...",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["RANGED"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "crystal_flute",
+    "name": "Crystal Flute",
+    "type": "CRYSTAL_FLUTE",
+    "levelRequired": 72,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 72}], "materials": [{"item": "Music crystal", "quantity": 1}, {"item": "Crystal shard", "quantity": 20}]},
+    "riff": {"effect": "CRYSTAL_SHARD_BOOST", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Playing enhances crystal shard drops by 25% while skilling or killing monsters."}
+  },
+  {
+    "id": "meilyrs_crystalline_flute",
+    "name": "Meilyr's Crystalline Flute",
+    "type": "CRYSTAL_FLUTE",
+    "levelRequired": 72,
+    "legendary": true,
+    "baseId": "crystal_flute",
+    "description": "The crystal flute that once belonged to Lady Meilyr herself. The flute seems to be made from an Enhanced Music Crystal Seed!",
+    "riff": {"effect": "CRYSTAL_SHARD_BOOST", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Playing enhances crystal shard drops by 50% while skilling or killing monsters."}
+  },
+  {
+    "id": "teponazti",
+    "name": "Teponazti",
+    "type": "TEPONAZTI",
+    "levelRequired": 74,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 73}], "materials": [{"item": "Hardened mahogany logs", "quantity": 2}]},
+    "riff": {"effect": "DOUBLE_LOG_BURN", "durationSeconds": 300, "cooldownMinutes": 10, "areaSize": 1, "description": "When played, 10% chance to burn double logs for the next 5 minutes."}
+  },
+  {
+    "id": "tlapitzaliztli_teochtli",
+    "name": "Tlapitzaliztli Teochtli",
+    "type": "TEPONAZTI",
+    "levelRequired": 74,
+    "legendary": true,
+    "baseId": "teponazti",
+    "description": "This instrument's name means \"Music Treasure\". This instrument has been passed down from the first people in Tal Teklon.",
+    "riff": {"effect": "DOUBLE_LOG_BURN", "durationSeconds": 300, "cooldownMinutes": 10, "areaSize": 1, "description": "When played, 20% chance to burn double logs at a campfire for the next 5 minutes."}
+  },
+  {
+    "id": "viol",
+    "name": "Viol",
+    "type": "VIOL",
+    "levelRequired": 75,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 75}, {"skill": "FLETCHING", "level": 75}], "materials": [{"item": "Willow logs", "quantity": 2}, {"item": "Stringy sinew", "quantity": 4}]},
+    "riff": {"effect": "STAT_DRAIN", "durationSeconds": 0, "cooldownMinutes": 10, "areaSize": 3, "description": "Drains the stats of all enemies around you (3x3)."}
+  },
+  {
+    "id": "hallowed_blisterwood_viol",
+    "name": "Hallowed Blisterwood Viol",
+    "type": "VIOL",
+    "levelRequired": 75,
+    "legendary": true,
+    "baseId": "viol",
+    "description": "A long-lost Viol that once belonged to a Icyene. The body is made of blisterwood and the strings are made of Araxyte Silk.",
+    "riff": {"effect": "STAT_DRAIN", "durationSeconds": 0, "cooldownMinutes": 10, "areaSize": 3, "description": "Drains the stats of all enemies around you (3x3)."}
+  },
+  {
+    "id": "didgeridoo",
+    "name": "Didgeridoo",
+    "type": "DIDGERIDOO",
+    "levelRequired": 78,
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 75}], "materials": [{"item": "Mahogany logs", "quantity": 3}]},
+    "riff": {"effect": "ATTRACT_HUNTER_ANIMALS", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Attracts hunter animals towards you if they are 3-8 tiles away."}
+  },
+  {
+    "id": "yommi_didgeridoo",
+    "name": "Yommi Didgeridoo",
+    "type": "DIDGERIDOO",
+    "levelRequired": 78,
+    "legendary": true,
+    "baseId": "didgeridoo",
+    "description": "This didgeridoo is made from knowledge of the Kharazi Tribe and crafted out of the magical bark of the Yommi Tree.",
+    "riff": {"effect": "ATTRACT_HUNTER_ANIMALS", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Attracts hunter animals towards you if they are 3-12 tiles away."}
+  },
+  {
+    "id": "steel_pan",
+    "name": "Steel Pan",
+    "type": "STEEL_PAN",
+    "levelRequired": 81,
+    "craft": {"requirements": [{"skill": "SMITHING", "level": 60}], "materials": [{"item": "Steel bar", "quantity": 5}]},
+    "riff": {"effect": "SUPERHEAT", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Can be charged with the Superheat Item spell. When used, smelts a single ore in your inventory using spell charges."}
+  },
+  {
+    "id": "vibranium_pan",
+    "name": "Vibranium Pan",
+    "type": "STEEL_PAN",
+    "levelRequired": 81,
+    "legendary": true,
+    "baseId": "steel_pan",
+    "description": "A Musical Metal Pan made of rare metals so deep within Gielinor that no human has ever seen it, only Tzhaar.",
+    "riff": {"effect": "SUPERHEAT", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Can be charged with the Superheat Item spell. When used, smelts all the ore in your inventory using spell charges. You can toggle which bars to superheat."}
+  },
+  {
+    "id": "sitar",
+    "name": "Sitar",
+    "type": "SITAR",
+    "levelRequired": 83,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 84}, {"skill": "FLETCHING", "level": 84}], "materials": [{"item": "Ironwood logs", "quantity": 2}, {"item": "Stringy sinew", "quantity": 3}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["SAILING"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "sitar_of_shining_sands",
+    "name": "Sitar of Shining Sands",
+    "type": "SITAR",
+    "levelRequired": 83,
+    "legendary": true,
+    "baseId": "sitar",
+    "description": "A sitar with golden strings bathed in the constant Sun of Tumeken.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["SAILING"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "fife",
+    "name": "Fife",
+    "type": "FIFE",
+    "levelRequired": 85,
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 90}], "materials": [{"item": "Rosewood logs", "quantity": 1}]},
+    "riff": {"effect": "WIND_BOOST_EXTEND", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Playing allows the next wind boost to your boat to be extended by 1.5x."}
+  },
+  {
+    "id": "tempest_fife",
+    "name": "Tempest Fife",
+    "type": "FIFE",
+    "levelRequired": 85,
+    "legendary": true,
+    "baseId": "fife",
+    "description": "A fife charged with the powers of the fiercest sea storms.",
+    "riff": {"effect": "WIND_BOOST_EXTEND", "durationSeconds": 0, "cooldownMinutes": 0, "areaSize": 1, "description": "Playing allows the next wind boost to your boat to be extended by 2x."}
+  },
+  {
+    "id": "war_drum",
+    "name": "War Drum",
+    "type": "WAR_DRUM",
+    "levelRequired": 86,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 86}], "materials": [{"item": "Larupia leather", "quantity": 2}, {"item": "Mahogany logs", "quantity": 4}]},
+    "riff": {"effect": "AGGRESSION_RESET", "durationSeconds": 10, "cooldownMinutes": 15, "areaSize": 1, "description": "Resets enemy aggression towards you and gives a +5 invisible Defence boost for 10 seconds."}
+  },
+  {
+    "id": "warbound_thunderdrum",
+    "name": "Warbound Thunderdrum",
+    "type": "WAR_DRUM",
+    "levelRequired": 86,
+    "legendary": true,
+    "baseId": "war_drum",
+    "description": "Thudderful's Strong Wardrum was crafted to withstand any strike. When hit, it sounds like an army of Ourgs ready to fight.",
+    "riff": {"effect": "AGGRESSION_RESET", "durationSeconds": 10, "cooldownMinutes": 15, "areaSize": 1, "description": "Resets enemy aggression towards you and gives a +10 invisible Defence boost for 10 seconds."}
+  },
+  {
+    "id": "ocarina",
+    "name": "Ocarina",
+    "type": "OCARINA",
+    "levelRequired": 88,
+    "craft": {"requirements": [{"skill": "FLETCHING", "level": 93}], "materials": [{"item": "Magic logs", "quantity": 3}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["MAGIC"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "ocarina_of_immortality",
+    "name": "Ocarina of Immortality",
+    "type": "OCARINA",
+    "levelRequired": 88,
+    "legendary": true,
+    "baseId": "ocarina",
+    "description": "An Ocarina made of the Arceuus Crystals that was crafted and played at the original Ascent of Arceuus.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["MAGIC"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "harp",
+    "name": "Harp",
+    "type": "HARP",
+    "levelRequired": 91,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 90}, {"skill": "FLETCHING", "level": 90}], "materials": [{"item": "Magic logs", "quantity": 5}, {"item": "Magic string", "quantity": 5}]},
+    "riff": {"effect": "PRAYER_RESTORE", "durationSeconds": 300, "cooldownMinutes": 10, "areaSize": 5, "description": "Slowly restores prayer over 5 minutes (1 prayer point every 30 seconds) for you and all players in a 5x5 area."}
+  },
+  {
+    "id": "harmonium_harp",
+    "name": "Harmonium Harp",
+    "type": "HARP",
+    "levelRequired": 91,
+    "legendary": true,
+    "baseId": "harp",
+    "description": "A harp that is known to create crystal harmonic dust from thin air with its beautiful sounds.",
+    "riff": {"effect": "PRAYER_RESTORE", "durationSeconds": 300, "cooldownMinutes": 10, "areaSize": 5, "description": "Slowly restores prayer over 5 minutes (1 prayer point every 20 seconds) for you and all players in a 5x5 area."}
+  },
+  {
+    "id": "silvthril_serpent",
+    "name": "Silvthril Serpent",
+    "type": "SERPENT",
+    "levelRequired": 93,
+    "craft": {"requirements": [{"skill": "SMITHING", "level": 95}], "materials": [{"item": "Silver bar", "quantity": 7}, {"item": "Mithril bar", "quantity": 7}, {"item": "Rune bar", "quantity": 7}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["RANGED", "DEFENCE"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "goldamant_geophis",
+    "name": "Goldamant Geophis",
+    "type": "SERPENT",
+    "levelRequired": 93,
+    "legendary": true,
+    "baseId": "silvthril_serpent",
+    "description": "A gold/adamant alloy instrument that has been favored by the Grand Shaman in Molch.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["RANGED", "DEFENCE"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "dragon_quad_drums",
+    "name": "Dragon Quad Drums",
+    "type": "QUAD_DRUMS",
+    "levelRequired": 95,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 95}], "materials": [{"item": "Magic logs", "quantity": 4}, {"item": "Green d'hide leather", "quantity": 2}, {"item": "Red d'hide leather", "quantity": 2}, {"item": "Blue d'hide leather", "quantity": 2}, {"item": "Black d'hide leather", "quantity": 2}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["ATTACK", "STRENGTH", "DEFENCE"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "hydra_quint_drums",
+    "name": "Hydra Quint Drums",
+    "type": "QUAD_DRUMS",
+    "levelRequired": 95,
+    "legendary": true,
+    "baseId": "dragon_quad_drums",
+    "description": "A five piece drum set made of tough and powerful hides of the Hydra creatures underneath Mount Karaluum.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["ATTACK", "STRENGTH", "DEFENCE"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "magic_cithara",
+    "name": "Magic Cithara",
+    "type": "CITHARA",
+    "levelRequired": 97,
+    "craft": {"requirements": [{"skill": "CRAFTING", "level": 95}, {"skill": "FLETCHING", "level": 95}], "materials": [{"item": "Magic logs", "quantity": 3}, {"item": "Magic string", "quantity": 15}]},
+    "riff": {"effect": "SKILL_BOOST", "skills": ["MAGIC", "DEFENCE"], "boost": 1, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
+  },
+  {
+    "id": "elspeths_piercing_cithara",
+    "name": "Elspeth's Piercing Cithara",
+    "type": "CITHARA",
+    "levelRequired": 97,
+    "legendary": true,
+    "baseId": "magic_cithara",
+    "description": "The Cithara from a powerful Icyene. It is said this instrument helped train the Icyene Elspeth to kill demons with piercing notes.",
+    "riff": {"effect": "SKILL_BOOST", "skills": ["MAGIC", "DEFENCE"], "boost": 2, "durationSeconds": 900, "cooldownMinutes": 15, "areaSize": 5}
   }
 ]
