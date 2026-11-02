@@ -19,6 +19,15 @@ public class InstrumentDef
 	String name;
 	InstrumentType type;
 
+	/** File name in resources/com/barding/data/icons, with exact capitals. Absent draws a placeholder. */
+	String icon;
+
+	/** Experience for each 1% tuned, in steps of 0.01. Legendaries use the same value as their standard version. */
+	double tuningXp;
+
+	/** Barding experience for each note hit, in steps of 0.01. Legendaries use the same value as their standard version. */
+	double playXp;
+
 	/** Barding level needed to use the instrument. */
 	int levelRequired;
 

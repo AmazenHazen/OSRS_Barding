@@ -4,9 +4,11 @@ import net.runelite.client.config.Config;
 import net.runelite.client.config.ConfigGroup;
 import net.runelite.client.config.ConfigItem;
 
-@ConfigGroup("barding")
+@ConfigGroup(BardingConfig.GROUP)
 public interface BardingConfig extends Config
 {
+	String GROUP = "barding";
+
 	@ConfigItem(
 		keyName = "greeting",
 		name = "Welcome Greeting",

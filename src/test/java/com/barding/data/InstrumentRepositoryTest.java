@@ -1,7 +1,10 @@
 package com.barding.data;
 
 import com.google.gson.Gson;
+import java.io.File;
 import java.io.StringReader;
+import java.util.Arrays;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -128,6 +131,33 @@ public class InstrumentRepositoryTest
 		{
 			assertTrue(e.getMessage(), e.getMessage().contains("Wnid"));
 			assertTrue(e.getMessage(), e.getMessage().contains("$[1].type"));
+		}
+	}
+
+	/** Lists the folder, because Windows ignores capitals but the jar a plugin ships in doesn't. */
+	@Test
+	public void iconFilesExistWithExactCapitals() throws Exception
+	{
+		File folder = new File(InstrumentRepository.class.getResource("icons").toURI());
+		List<String> files = Arrays.asList(folder.list());
+		for (InstrumentDef def : repo.all())
+		{
+			if (def.getIcon() != null)
+			{
+				assertTrue(def.getId() + " icon not found: " + def.getIcon(), files.contains(def.getIcon()));
+			}
+		}
+	}
+
+	@Test
+	public void legendariesUseTheirBaseIcon()
+	{
+		for (InstrumentDef def : repo.all())
+		{
+			if (def.isLegendary())
+			{
+				assertEquals(def.getId() + " icon", repo.get(def.getBaseId()).getIcon(), def.getIcon());
+			}
 		}
 	}
 

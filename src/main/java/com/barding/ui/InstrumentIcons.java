@@ -1,5 +1,6 @@
 package com.barding.ui;
 
+import com.barding.data.InstrumentDef;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -12,15 +13,16 @@ import javax.inject.Singleton;
 import net.runelite.client.util.ImageUtil;
 
 /**
- * Turns an instrument id into its icon. The data files only hold the id; the picture lives in
- * src/main/resources/com/barding/icons/<id>.png. If a PNG is missing, a placeholder is drawn
+ * Turns an instrument into its icon. The data files only hold the file name; the picture lives in
+ * src/main/resources/com/barding/data/icons. If an instrument has no icon, a placeholder is drawn
  * (a dark tile with the first letter of the id), so the UI works before any art exists.
  */
 @Singleton
 public class InstrumentIcons
 {
     public static final int SIZE = 28;
-    private static final String PATH = "/com/barding/icons/";
+    private static final String PATH = "/com/barding/data/icons/";
+    private static final String SKILL_ICON = "lyre.png";
 
     private final Map<String, BufferedImage> cache = new HashMap<>();
 
@@ -29,21 +31,34 @@ public class InstrumentIcons
     {
     }
 
-    public synchronized BufferedImage get(String instrumentId)
+    public synchronized BufferedImage get(InstrumentDef def)
     {
-        BufferedImage icon = cache.get(instrumentId);
+        BufferedImage icon = cache.get(def.getId());
         if (icon == null)
         {
-            icon = load(instrumentId);
-            cache.put(instrumentId, icon);
+            icon = load(def);
+            cache.put(def.getId(), icon);
         }
         return icon;
     }
 
-    private static BufferedImage load(String id)
+    /** The Barding skill icon, scaled to the given height. */
+    public BufferedImage skillIcon(int height)
     {
-        String path = PATH + id + ".png";
-        if (InstrumentIcons.class.getResource(path) != null)
+        BufferedImage image = ImageUtil.loadImageResource(InstrumentIcons.class, PATH + SKILL_ICON);
+        return ImageUtil.resizeImage(image, image.getWidth() * height / image.getHeight(), height, true);
+    }
+
+    /** The width of the skill icon at the given height. */
+    public int skillIconWidth(int height)
+    {
+        return skillIcon(height).getWidth();
+    }
+
+    private static BufferedImage load(InstrumentDef def)
+    {
+        String path = PATH + def.getIcon();
+        if (def.getIcon() != null && InstrumentIcons.class.getResource(path) != null)
         {
             try
             {
@@ -55,7 +70,7 @@ public class InstrumentIcons
                 // unreadable PNG: fall through to the placeholder
             }
         }
-        return placeholder(id);
+        return placeholder(def.getId());
     }
 
     private static BufferedImage placeholder(String id)

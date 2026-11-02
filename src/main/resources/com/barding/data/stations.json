@@ -1,0 +1,5 @@
+[
+  {"id": "lumbridge_furnace", "name": "Lumbridge furnace", "x": 3229, "y": 3256, "plane": 0, "orientation": 0},
+  {"id": "farming_guild_upper_bank", "name": "Farming Guild upper bank", "x": 1250, "y": 3757, "plane": 0, "orientation": 0},
+  {"id": "myths_guild_bank", "name": "Myths' Guild bank", "x": 2463, "y": 2849, "plane": 1, "orientation": 0}
+]
